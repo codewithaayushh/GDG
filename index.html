@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scientific Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="calculator-container">
+    <!-- Top bar -->
+    <div class="top-bar">
+      <label class="toggle-label" id="modeLabel">
+        <input type="checkbox" id="themeToggle" />
+        Light Mode
+      </label>
+    </div>
+
+    <!-- Display -->
+    <div class="display-row">
+      <input type="text" id="display" class="display" readonly />
+      <button id="historyBtn" class="neumorphic-btn">History</button>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons" id="buttonContainer"></div>
+
+    <!-- History panel -->
+    <div class="history-panel" id="historyPanel" style="display: none;">
+      <div class="history-header">
+        <h3>History</h3>
+        <button id="clearHistory" class="neumorphic-btn small">Clear</button>
+      </div>
+      <ul id="historyList"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
