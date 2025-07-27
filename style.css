@@ -1,0 +1,206 @@
+:root {
+  --bg: #111827;
+  --text: #f8fafc;
+  --panel: rgba(255, 255, 255, 0.04);
+  --btn-bg: #1f2937;
+  --btn-hover: #374151;
+  --btn-border: 1px solid rgba(255, 255, 255, 0.15);
+  --accent: #38bdf8;
+  --highlight: #facc15;
+  --transition: 0.3s ease;
+  --glass-blur: blur(16px);
+  --border-dark: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.light {
+  --bg: #ffffff;
+  --text: #1f2937;
+  --panel: rgba(255, 255, 255, 0.95);
+  --btn-bg: #f1f5f9;
+  --btn-hover: #e2e8f0;
+  --btn-border: 1px solid rgba(0, 0, 0, 0.1);
+  --accent: #2563eb;
+  --highlight: #facc15;
+  --border-dark: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg), #0f172a);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: var(--transition);
+}
+
+.calculator-container {
+  background: var(--panel);
+  backdrop-filter: var(--glass-blur);
+  padding: 25px;
+  border-radius: 20px;
+  width: 420px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: var(--transition);
+  animation: fadeIn 0.6s ease-in-out;
+  border: var(--border-dark);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.mode-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background: var(--btn-hover);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.mode-toggle input {
+  display: none;
+}
+
+.mode-toggle span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: var(--highlight);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.mode-toggle input:checked + span {
+  transform: translateX(30px);
+}
+
+.display-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.display {
+  flex: 1;
+  height: 50px;
+  padding: 0 15px;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  background: var(--btn-bg);
+  color: var(--text);
+  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.2);
+  transition: var(--transition);
+  border: var(--btn-border);
+}
+
+.neumorphic-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.neumorphic-btn:hover {
+  background: var(--btn-hover);
+  transform: scale(1.05);
+}
+
+.neumorphic-btn.small {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  animation: fadeInButtons 0.8s ease-in-out;
+}
+
+.buttons button {
+  height: 50px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  background: var(--btn-bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+  border: var(--btn-border);
+}
+
+.buttons button:active {
+  transform: scale(0.95);
+  border-color: var(--highlight);
+  box-shadow: 0 0 0 3px var(--highlight);
+}
+
+.buttons button span {
+  position: relative;
+  z-index: 1;
+}
+
+.buttons button:hover {
+  background: var(--btn-hover);
+  transform: translateY(-3px);
+}
+
+.history-panel {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--btn-bg);
+  color: var(--text);
+  max-height: 200px;
+  overflow-y: auto;
+  transition: var(--transition);
+  border: var(--border-dark);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+#historyList {
+  list-style: none;
+  margin: 0;
+  padding-left: 15px;
+}
+
+.empty-space {
+  visibility: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInButtons {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
